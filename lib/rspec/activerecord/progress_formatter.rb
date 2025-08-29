@@ -6,7 +6,8 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
 
   ::RSpec::Core::Formatters.register self, :start, :dump_summary,
                                            :example_started, :example_group_started,
-                                           :example_group_finished
+                                           :example_group_finished, :example_passed,
+                                           :example_pending
 
   def initialize(output)
     super
@@ -19,6 +20,14 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
   def start(_start_notification)
     output.puts "Recording and reporting ActiveRecord select and creation counts."
     super
+  end
+
+  def example_passed(_notification)
+    print '.'
+  end
+
+  def example_pending(_notification)
+    print '*'
   end
 
   def example_group_started(example_group)
