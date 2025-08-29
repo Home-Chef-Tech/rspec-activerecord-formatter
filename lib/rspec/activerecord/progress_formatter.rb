@@ -15,9 +15,6 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
     @colorizer  = ::RSpec::Core::Formatters::ConsoleCodes
     @collector  = ActiveRecordFormatterHelpers::Collector.new
     @report     = ActiveRecordFormatterHelpers::Report.new(collector)
-    RSpec.configure do |config|
-      config.add_setting :progress_color, :default => true
-    end
   end
 
   def start(_start_notification)
@@ -26,19 +23,11 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
   end
 
   def example_passed(_notification)
-    if RSpec.configuration.progress_color
-      super(_notification)
-    else
-      print '.'
-    end
+    print '.'
   end
 
   def example_pending(_notification)
-    if RSpec.configuration.progress_color
-      super(_notification)
-    else
-      print '*'
-    end
+    print '*'
   end
 
   def example_group_started(example_group)

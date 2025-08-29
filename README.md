@@ -54,16 +54,6 @@ If you want less granularity, you can also use the progress formatter:
     --require rails_helper
     --format ActiveRecordProgressFormatter
 
-Some CI systems, like github actions, have a hard time with all the ANSI color characters output by the progress formatter. If you'd
-like to reduce the number of color codes used to speed up your UI, you can set the `progress_color` config variable to false. This
-will reduce color output for the progress formatter to only highlight failed tests.
-
-```
-RSpec.configure do |config|
-  config.progress_color = false
-end
-```
-
 Contributing
 ------------
 
