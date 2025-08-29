@@ -15,6 +15,9 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
     @colorizer  = ::RSpec::Core::Formatters::ConsoleCodes
     @collector  = ActiveRecordFormatterHelpers::Collector.new
     @report     = ActiveRecordFormatterHelpers::Report.new(collector)
+    RSpec.configure do |config|
+      config.add_setting :progress_color, :default => true
+    end
   end
 
   def start(_start_notification)
