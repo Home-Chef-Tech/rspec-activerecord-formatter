@@ -23,11 +23,19 @@ class ActiveRecordProgressFormatter < ::RSpec::Core::Formatters::ProgressFormatt
   end
 
   def example_passed(_notification)
-    print '.'
+    if RSpec.configuration.progress_color
+      super(_notification)
+    else
+      print '.'
+    end
   end
 
   def example_pending(_notification)
-    print '*'
+    if RSpec.configuration.progress_color
+      super(_notification)
+    else
+      print '*'
+    end
   end
 
   def example_group_started(example_group)
