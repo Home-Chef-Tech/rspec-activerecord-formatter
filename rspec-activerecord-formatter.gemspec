@@ -6,7 +6,7 @@ $LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
 Gem::Specification.new do |gem|
 
   gem.name    = "rspec-activerecord-formatter"
-  gem.version = "2.2.2"
+  gem.version = "2.2.3" # forked from 2.2.2 to add support for Rails 8.1
 
   gem.summary     = "Adds object creations and queries to Rspec output."
   gem.description = "Creates a new formatter for ActiveRecord that can help you diagnose performance issues in RSpec"
@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
 
   gem.require_paths = %w[ext lib].select { |dir| File.directory?(dir) }
 
-  gem.add_dependency "activesupport", ">= 4.0", "< 8.1"
+  gem.add_dependency "activesupport", ">= 4.0", "<= 8.1"
   gem.add_dependency "rspec", ">= 3.4"
 
   gem.add_development_dependency "coveralls", "~> 0.8"
